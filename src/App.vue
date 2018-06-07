@@ -1,28 +1,36 @@
 <template>
   <div id="app">
     <message>{{msg}}</message>
-    <playerinput v-on:new-player="addNewPlayer"></playerinput>
-    <playerlist v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></playerlist>
+    <StartComp  v-on:new-game="startGame" :players="players"></StartComp>
+    <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
+    <MatchComp :matchname="matchname" :players="players" ></MatchComp>
   </div>
 </template>
 
 <script>
 import Message from './components/Message.vue';
-import Playerinput from './components/Playerinput.vue';
-import Playerlist from './components/Playerlist.vue';
+import PlayerInput from './components/PlayerInput.vue';
+import PlayerList from './components/PlayerList.vue';
+import MatchComp from './components/MatchComp.vue';
+import TossComp from './components/TossComp.vue';
+import LigaTable from './components/LigaTable.vue';
+import StartComp from './components/StartComp.vue';
 
 export default {
   name: 'app',
-  components: { Message, Playerlist, Playerinput },
+  components: { Message, PlayerList, PlayerInput, MatchComp, TossComp, LigaTable, StartComp },
   data () {
     return {
       players: [],
-      msg: "Aluball"
+      msg: "Aluball",
+      matchname: "1Match2",
+      start: false
     }
   },
   methods: {
-    addNewPlayer: function(playerName){
-      this.players.push({number:this.players.length+1,name:playerName,victorys:0,draws:0,shots:0,hits:0,missed:0,avg:0.0 });
+    addNewPlayer: function(playername){
+      console.log("PENIS!!");
+      this.players.push({number:this.players.length,name:playername,victorys:0,draws:0,shots:0,hits:0,missed:0,avg:0.0 });
       this.players.sort(this.comparePlayer);
     },
 
@@ -67,6 +75,30 @@ export default {
       this.players.sort(this.comparePlayer);
     },
 
+    startGame: function(){
+      console.log("STARTE DAS VERDAMMTE SPIEL DU HURENSOHN!!!");
+      
+      this.start = true;
+    },
+
+    shuffle: function(array){
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    },
 
     comparePlayer: function(a,b){
         if(a.victorys > b.victorys){

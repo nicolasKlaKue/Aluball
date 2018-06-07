@@ -14,8 +14,8 @@ export default {
         }
     },
   methods: {
-    addNewPlayer: function(playerName){
-      this.$emit('new-player',this.playername);
+    addNewPlayer: function(){
+      this.$emit('pass-player',this.playername);
       this.playername = '';
     }
   }
