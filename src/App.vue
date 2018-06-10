@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <message>{{msg}}</message>
-    <StartComp  v-on:new-game="startGame" :players="players"></StartComp>
+    <StartComp  v-if="start" :players="players"></StartComp>
     <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
     <MatchComp :matchname="matchname" :players="players" ></MatchComp>
   </div>
 </template>
 
 <script>
+
 import Message from './components/Message.vue';
 import PlayerInput from './components/PlayerInput.vue';
 import PlayerList from './components/PlayerList.vue';
@@ -24,8 +25,12 @@ export default {
       players: [],
       msg: "Aluball",
       matchname: "1Match2",
-      start: false
+      start: true
     }
+  },
+  created(){
+    Event.$on('new-player', this.addNewPlayer);
+    Event.$on('start-game', this.startGame);
   },
   methods: {
     addNewPlayer: function(playername){
@@ -78,7 +83,7 @@ export default {
     startGame: function(){
       console.log("STARTE DAS VERDAMMTE SPIEL DU HURENSOHN!!!");
       
-      this.start = true;
+      this.start = false;
     },
 
     shuffle: function(array){

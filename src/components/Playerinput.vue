@@ -14,9 +14,9 @@ export default {
         }
     },
   methods: {
-    addNewPlayer: function(){
-      this.$emit('pass-player',this.playername);
-      this.playername = '';
+    addNewPlayer: function(){        
+      Event.$emit('new-player',this.playername);
+      this.playername = ''; 
     }
   }
 }

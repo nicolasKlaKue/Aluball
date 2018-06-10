@@ -1,6 +1,6 @@
 <template>
     <div id="startcomp">
-        <PlayerInput v-on:pass-player="passNewPlayer" ></PlayerInput>
+        <PlayerInput></PlayerInput>
         <PlayerList v-on:new-game="startGame" :players="players" ></PlayerList>
     </div>
 </template>
@@ -16,11 +16,6 @@ export default {
     methods: {
         startGame: function(){
             this.$emit('new-game');
-        },
-        passNewPlayer: function(playername){
-            console.log("WAS DAS DENN?!" + playername);
-            
-            this.$emit('new-player',playername);
         }
     }
 }

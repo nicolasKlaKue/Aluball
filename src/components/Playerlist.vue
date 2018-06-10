@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         start: function(){
-            this.$emit('new-game');
+            Event.$emit('start-game');
         }
     }    
 }
