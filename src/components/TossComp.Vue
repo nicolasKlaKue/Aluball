@@ -1,7 +1,7 @@
 <template>
     <div class="column" :id="playernumber + '_toss_' + tossnumber">
-        <input class="miss" @click="triggermiss" v-model="triggered_hit" type="checkbox"  :name="playernumber+ '_miss_' + tossnumber" id="">
         <input type="checkbox" @click="triggerhit"  v-model="triggered_miss" :name="playernumber + '_hit_' + tossnumber" id="">
+        <input class="miss" @click="triggermiss" v-model="triggered_hit" type="checkbox"  :name="playernumber+ '_miss_' + tossnumber" id="">
         <button class="button hit_button" @click="triggerhit">+</button>
         <button class="button miss_button" @click="triggermiss">-</button>
     </div>

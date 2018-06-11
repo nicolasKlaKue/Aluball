@@ -18,20 +18,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(player, index) in players" :key="player.key">
+                <tr>
                     <td>
-                        {{index}} - {{player.name}}
+                        {{player1.name}}
                     </td>
                     <td>
                         <table class="flex">
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=1 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=1 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=2 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=2 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=3 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=3 ></TossComp>
                             </tr>
                         </table>
                         
@@ -39,26 +39,71 @@
                     <td>
                         <table class="flex">
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=4 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=4 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=5 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=5 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=6 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=6 ></TossComp>
                             </tr>
                         </table>
                     </td>
                     <td>
                         <table class="flex">
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=7 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=7 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=8 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=8 ></TossComp>
                             </tr>
                             <tr class="inline_grid">
-                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="index" :TossCompnumber=9 ></TossComp>
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player1.number" :tossnumber=9 ></TossComp>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{player2.name}}
+                    </td>
+                    <td>
+                        <table class="flex">
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=1 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=2 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=3 ></TossComp>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                    <td>
+                        <table class="flex">
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=4 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=5 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=6 ></TossComp>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="flex">
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=7 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=8 ></TossComp>
+                            </tr>
+                            <tr class="inline_grid">
+                                <TossComp v-on:playerhit="playerhit" v-on:playermiss="playermiss" :playernumber="player2.number" :tossnumber=9 ></TossComp>
                             </tr>
                         </table>
                     </td>
@@ -76,7 +121,7 @@ import TossComp from './TossComp.vue';
 export default {
     name: 'match',
     components: {TossComp},
-    props: ['players','matchname'],
+    props: ['player1', 'player2','matchname','match'],
     data () {
         return {  
             score_player1: 0,
@@ -91,23 +136,38 @@ export default {
             console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
             
             if (args[0] == 0) {
-                this.score_player1++;
+                this.match.player1_hits[args[1]] = 1;
+                this.score_player1 = 0;
+                for (let index = 0; index < this.match.player1_hits.length; index++) {
+                    this.score_player1 += this.match.player1_hits[index];
+                }
             }
             if(args[0] == 1){
-                this.score_player2++;
+                this.match.player2_hits[args[1]] = 1;
+
+                this.score_player2 = 0;
+                for (let index = 0; index < this.match.player2_hits.length; index++) {
+                    this.score_player2 += this.match.player2_hits[index];
+                }
             }
         },
         playermiss: function(args){
             console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
             
             if(args[0] == 0){
-                if(this.score_player1 > 0){
-                    this.score_player1--;
+                this.match.player1_hits[args[1]] = 0;
+
+                this.score_player1 = 0;
+                for (let index = 0; index < this.match.player1_hits.length; index++) {
+                    this.score_player1 += this.match.player1_hits[index];
                 }
             }
             if(args[0] == 1){
-                if(this.score_player2 > 0){
-                    this.score_player2--;
+                this.match.player2_hits[args[1]] = 0;
+
+                this.score_player2 = 0;
+                for (let index = 0; index < this.match.player2_hits.length; index++) {
+                    this.score_player2 += this.match.player2_hits[index];
                 }
             }
         }
@@ -127,7 +187,6 @@ export default {
     background-color: green;
 }
 .miss{
-    appearance: none;
     border-radius: 50%;
     background-color: red;
 }

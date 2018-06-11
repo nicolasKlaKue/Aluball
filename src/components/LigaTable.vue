@@ -31,10 +31,10 @@
                 <td>{{player.shots}}</td>
                 <td>{{player.hits}}</td>
                 <td>{{player.missed}}</td>
-                <th><button v-on:click="$emit('player-missed',player.number)">{{player.name}}-miss</button></th>
-                <th><button v-on:click="$emit('player-hit',player.number)">{{player.name}}-getroffen</button></th>
-                <th><button v-on:click="$emit('player-victory',player.number)">{{player.name}}-gewonnen</button></th>
-                <th><button v-on:click="$emit('player-draw',player.number)">{{player.name}}-Unentschieden</button></th>
+                <th><button v-on:click="playerMissed">{{player.name}}-miss</button></th>
+                <th><button v-on:click="playerHit">{{player.name}}-getroffen</button></th>
+                <th><button v-on:click="playerWon">{{player.name}}-gewonnen</button></th>
+                <th><button v-on:click="playerDraw">{{player.name}}-Unentschieden</button></th>
             </tr>
 
         </table>
@@ -47,7 +47,21 @@ export default {
     data () {
         return {    
         }
-    }    
+    },
+    methods:{
+        playerMissed: function(){
+            Event.$emit('player-missed',player.number);
+        },
+        playerHit: function(){
+            Event.$emit('player-hit',player.number);
+        },
+        playerWon: function(){
+            Event.$emit('player-victory',player.number);
+        },
+        playerDraw: function(){
+            Event.$emit('player-draw',player.number);
+        }
+    }  
 }
 </script>
 <style>
