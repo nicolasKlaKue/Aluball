@@ -39,10 +39,10 @@ export default {
     Event.$on('player-lost', this.playerLost);
     Event.$on('player-hit', this.playerHit);
     Event.$on('player-miss', this.playerMiss);
+    Event.$on('shuffle-matches', this.shuffleMatches);
   },
   methods: {
     addNewPlayer: function(playername){
-      console.log("PENIS!!");
       this.players.push({number:this.players.length,name:playername,victorys:0,draws:0,shots:0,hits:0,missed:0,avg:0.0 });
       this.players.sort(this.comparePlayer);
     },
@@ -61,6 +61,11 @@ export default {
       this.start = false;
       this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);
+    },
+
+    shuffleMatches: function(){      
       this.matches = this.shuffle(this.matches);
     },
 
