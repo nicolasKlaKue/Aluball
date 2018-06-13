@@ -15,6 +15,9 @@
                     <th>
                         Runde 3
                     </th>
+                    <th>
+                        Punkte
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +65,9 @@
                             </tr>
                         </table>
                     </td>
+                    <td>
+                        <p>{{score_player1}}</p>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -107,11 +113,12 @@
                             </tr>
                         </table>
                     </td>
+                    <td>
+                        <p>{{score_player2}}</p>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <p>{{score_player1}}</p>
-        <p>{{score_player2}}</p>
         <button v-on:click="addNewGame">Spiel abschließen</button>
     </div>
 </template>
@@ -135,14 +142,14 @@ export default {
         playerhit: function(args){
             console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
             
-            if (args[0] == 0) {
+            if (args[0] == this.player1.number) {
                 this.match.player1_hits[args[1]] = 1;
                 this.score_player1 = 0;
                 for (let index = 0; index < this.match.player1_hits.length; index++) {
                     this.score_player1 += this.match.player1_hits[index];
                 }
             }
-            if(args[0] == 1){
+            if(args[0] == this.player2.number){
                 this.match.player2_hits[args[1]] = 1;
 
                 this.score_player2 = 0;
@@ -154,7 +161,7 @@ export default {
         playermiss: function(args){
             console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
             
-            if(args[0] == 0){
+            if(args[0] == this.player1.number){
                 this.match.player1_hits[args[1]] = 0;
 
                 this.score_player1 = 0;
@@ -162,7 +169,7 @@ export default {
                     this.score_player1 += this.match.player1_hits[index];
                 }
             }
-            if(args[0] == 1){
+            if(args[0] == this.player2.number){
                 this.match.player2_hits[args[1]] = 0;
 
                 this.score_player2 = 0;
