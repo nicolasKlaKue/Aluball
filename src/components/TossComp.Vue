@@ -24,6 +24,7 @@ export default {
             this.triggered_hit = false;
             this.triggered_miss = true;
             this.$emit('playerhit',args);
+            this.$emit('thrown', args);
         },
         triggermiss: function(){
             var args = [this.playernumber, this.tossnumber];
@@ -31,6 +32,7 @@ export default {
             this.triggered_hit = true;
             this.triggered_miss = false;
             this.$emit('playermiss',args);
+            this.$emit('thrown', args);
         }
     }
 }
