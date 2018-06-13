@@ -1,6 +1,5 @@
 <template>
     <div id="gamecomp">
-        <h1>TABELLEOMG</h1>
         <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
         <MatchList :matches="matches" :players="players"></MatchList>
         <ul>
