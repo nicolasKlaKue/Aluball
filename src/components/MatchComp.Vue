@@ -119,7 +119,7 @@
                 </tr>
             </tbody>
         </table>
-        <button v-on:click="addNewGame">Spiel abschließen</button>
+        <button v-if="game_complete" v-on:click="addNewGame">Spiel abschließen</button>
     </div>
 </template>
 <script>
@@ -149,10 +149,12 @@ export default {
             if(args[0] == this.player1.number){
                 // -1 because thrownumber is one higher than array-index
                 this.thrown_player1[args[1]-1] = true;
+                this.game_complete = this.checkBoolArray(this.thrown_player1) && this.checkBoolArray(this.thrown_player2);
             }
             if(args[0] == this.player2.number){
                 // -1 because thrownumber is one higher than array-index
                 this.thrown_player2[args[1]-1] = true;
+                this.game_complete = this.checkBoolArray(this.thrown_player1) && this.checkBoolArray(this.thrown_player2);
             }
         },
 
@@ -194,6 +196,14 @@ export default {
                     this.score_player2 += this.match.player2_hits[index];
                 }
             }
+        },
+        checkBoolArray: function(array){
+            for (let index = 0; index < array.length; index++) {
+                if(array[index] == false){
+                    return false;
+                }
+            }
+            return true;
         }
     }  
 }
