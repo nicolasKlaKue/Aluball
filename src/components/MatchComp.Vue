@@ -1,5 +1,6 @@
 <template>
-    <div :id="matchname">
+    <div v-if="game_active" :id="matchname">
+        <h1>Match {{matchnumber + 1}}</h1>
         <table>
             <thead>
                 <tr>
@@ -128,19 +129,44 @@ import TossComp from './TossComp.vue';
 export default {
     name: 'match',
     components: {TossComp},
-    props: ['player1', 'player2','matchname','match'],
+    props: ['matchnumber', 'player1', 'player2','matchname','match'],
     data () {
         return {  
             score_player1: 0,
             score_player2: 0,
             thrown_player1: [false, false, false, false, false, false, false, false, false],
             thrown_player2: [false, false, false, false, false, false, false, false, false],
-            game_complete: false
+            game_complete: false,
+            game_active: true
         }
     },
     methods:{
         addNewGame: function (params) {
-            
+            if(this.score_player1 > this.score_player2){
+                Event.$emit("player-won", this.player1.number);
+                Event.$emit("player-lost", this.player2.number);
+            }else if(this.score_player2 > this.score_player1){
+                Event.$emit("player-won", this.player2.number);
+                Event.$emit("player-lost", this.player1.number);
+            }else if(this.score_player1 == this.score_player2){
+                Event.$emit("player-draw", this.player1.number);
+                Event.$emit("player-draw", this.player2.number);
+            }
+            for (let index = 1; index < this.match.player1_hits.length; index++) {
+                if(this.match.player1_hits[index] == 1){
+                    Event.$emit("player-hit", this.player1.number);
+                }else{
+                    Event.$emit("player-miss", this.player1.number);
+                }
+            }
+            for (let index = 1; index < this.match.player2_hits.length; index++) {
+                if(this.match.player2_hits[index] == 1){
+                    Event.$emit("player-hit", this.player2.number);
+                }else{
+                    Event.$emit("player-miss", this.player2.number);
+                }
+            }
+            this.game_active = false;
         },
 
         playerthrown: function(args) {

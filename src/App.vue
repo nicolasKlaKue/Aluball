@@ -34,11 +34,6 @@ export default {
   created(){
     Event.$on('new-player', this.addNewPlayer);
     Event.$on('start-game', this.startGame);
-    Event.$on('player-victory', this.playerVictory);
-    Event.$on('player-draw', this.playerDraw);
-    Event.$on('player-lost', this.playerLost);
-    Event.$on('player-hit', this.playerHit);
-    Event.$on('player-miss', this.playerMiss);
     Event.$on('shuffle-matches', this.shuffleMatches);
   },
   methods: {

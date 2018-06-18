@@ -3,8 +3,8 @@
         <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
         <MatchList :matches="matches" :players="players"></MatchList>
         <ul>
-            <li v-for="match in matches" :key="match.key">
-                <MatchComp :matchname='match.player1 + "match" + match.player2' :match='match' :player1='players.find(x => x.number === match.player1)' :player2='players.find(x => x.number === match.player2)'></MatchComp>
+            <li v-for="(match, index) in matches" :key="match.key">
+                <MatchComp :matchnumber="index" :matchname='match.player1 + "match" + match.player2' :match='match' :player1='players.find(x => x.number === match.player1)' :player2='players.find(x => x.number === match.player2)'></MatchComp>
             </li>
         </ul>
         <!--<MatchComp :matchname="matchname" :players="players" ></MatchComp>-->
@@ -18,6 +18,13 @@ export default {
     name: 'gamecomp',
     components: {LigaTable, MatchList, MatchComp},
     props: ['players', 'matches'],
+    created(){
+        Event.$on('player-won', this.playerVictory);
+        Event.$on('player-draw', this.playerDraw);
+        Event.$on('player-lost', this.playerLost);
+        Event.$on('player-hit', this.playerHit);
+        Event.$on('player-miss', this.playerMiss);
+    },
     methods:{
         playerVictory: function(playerNumber){
             for(var i = 0; i < this.players.length; i++){
