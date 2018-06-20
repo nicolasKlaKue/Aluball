@@ -1,9 +1,17 @@
 <template>
     <div id="gamecomp">
-        <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
-        <MatchList :matches="matches" :players="players"></MatchList>
+        <div class="row">
+            <div class="col-sm-6">
+                <MatchList :matches="matches" :players="players"></MatchList>
+            </div>
+            <div class="col-sm-6">
+                <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
+            </div>
+        </div>
+        
+        
         <ul>
-            <li v-for="(match, index) in matches" :key="match.key">
+            <li class="list" v-for="(match, index) in matches" :key="match.key">
                 <MatchComp :matchnumber="index" :matchname='match.player1 + "match" + match.player2' :match='match' :player1='players.find(x => x.number === match.player1)' :player2='players.find(x => x.number === match.player2)'></MatchComp>
             </li>
         </ul>
@@ -40,6 +48,15 @@ export default {
             for(var i = 0; i < this.players.length; i++){
                 if(this.players[i].number == playerNumber){
                 this.players[i].draws++;
+                }
+            }
+            this.players.sort(this.comparePlayer);
+        },
+
+        playerLost: function(playerNumber){            
+            for(var i = 0; i < this.players.length; i++){
+                if(this.players[i].number == playerNumber){
+                this.players[i].losses++;
                 }
             }
             this.players.sort(this.comparePlayer);
@@ -92,5 +109,7 @@ export default {
 }
 </script>
 <style>
-
+.list{
+    list-style-type: none;
+}
 </style>

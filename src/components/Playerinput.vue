@@ -1,8 +1,10 @@
 <template>
-    <div id="playerinput">
-        <h1>Spielername: {{playername}}</h1>
-        <input v-model="playername" type="text"> 
-        <button v-on:click="addNewPlayer">Spieler hinzufügen</button>
+    <div class="input-group text-center" id="playerinput">
+        <h1>Spielername:</h1>
+        <input @keyup.enter="addNewPlayer" class="form-control" v-model="playername" type="text"> 
+        <div class="input-group-append">
+            <button class="btn btn-primary"  v-on:click="addNewPlayer">Spieler hinzufügen</button>
+        </div>
     </div>
 </template>
 <script>

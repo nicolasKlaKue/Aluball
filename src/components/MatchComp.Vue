@@ -152,26 +152,25 @@ export default {
                 Event.$emit("player-draw", this.player1.number);
                 Event.$emit("player-draw", this.player2.number);
             }
-            for (let index = 1; index < this.match.player1_hits.length; index++) {
+            for (let index = 0; index < this.match.player1_hits.length; index++) {
                 if(this.match.player1_hits[index] == 1){
                     Event.$emit("player-hit", this.player1.number);
                 }else{
                     Event.$emit("player-miss", this.player1.number);
                 }
             }
-            for (let index = 1; index < this.match.player2_hits.length; index++) {
+            for (let index = 0; index < this.match.player2_hits.length; index++) {
                 if(this.match.player2_hits[index] == 1){
                     Event.$emit("player-hit", this.player2.number);
                 }else{
                     Event.$emit("player-miss", this.player2.number);
                 }
             }
+            Event.$emit("finish-game", this.match.number);
             this.game_active = false;
         },
 
-        playerthrown: function(args) {
-            console.log("Voll der wurf so!");
-            
+        playerthrown: function(args) {            
             if(args[0] == this.player1.number){
                 // -1 because thrownumber is one higher than array-index
                 this.thrown_player1[args[1]-1] = true;
@@ -184,18 +183,16 @@ export default {
             }
         },
 
-        playerhit: function(args){
-            console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
-            
+        playerhit: function(args){            
             if (args[0] == this.player1.number) {
-                this.match.player1_hits[args[1]] = 1;
+                this.match.player1_hits[args[1]-1] = 1;
                 this.score_player1 = 0;
                 for (let index = 0; index < this.match.player1_hits.length; index++) {
                     this.score_player1 += this.match.player1_hits[index];
                 }
             }
             if(args[0] == this.player2.number){
-                this.match.player2_hits[args[1]] = 1;
+                this.match.player2_hits[args[1]-1] = 1;
 
                 this.score_player2 = 0;
                 for (let index = 0; index < this.match.player2_hits.length; index++) {
@@ -207,7 +204,7 @@ export default {
             console.log("Player: " + args[0] + " getroffen Wurf: " + args[1]);
             
             if(args[0] == this.player1.number){
-                this.match.player1_hits[args[1]] = 0;
+                this.match.player1_hits[args[1]-1] = 0;
 
                 this.score_player1 = 0;
                 for (let index = 0; index < this.match.player1_hits.length; index++) {
@@ -215,7 +212,7 @@ export default {
                 }
             }
             if(args[0] == this.player2.number){
-                this.match.player2_hits[args[1]] = 0;
+                this.match.player2_hits[args[1]-1] = 0;
 
                 this.score_player2 = 0;
                 for (let index = 0; index < this.match.player2_hits.length; index++) {

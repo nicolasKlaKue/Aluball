@@ -35,21 +35,32 @@ export default {
     Event.$on('new-player', this.addNewPlayer);
     Event.$on('start-game', this.startGame);
     Event.$on('shuffle-matches', this.shuffleMatches);
+    Event.$on('finish-game', this.finishGame);
   },
   methods: {
     addNewPlayer: function(playername){
-      this.players.push({number:this.players.length,name:playername,victorys:0,draws:0,shots:0,hits:0,missed:0,avg:0.0 });
+      this.players.push({number:this.players.length,name:playername,victorys:0,draws:0,losses:0,shots:0,hits:0,missed:0,avg:0.0 });
       this.players.sort(this.comparePlayer);
     },
 
+    finishGame: function(gamenumber){
+      for (let index = 0; index < this.matches.length; index++) {
+        if (this.matches[index].number == gamenumber) {
+          console.log("Index: " + index + " < " + this.matches.length);
+          this.matches[index].finished = true;
+        }else{
+          console.log("Something went wrong!" + index);
+        }
+      }
+    },
     
 
     startGame: function(){
-      console.log("STARTE DAS VERDAMMTE SPIEL DU HURENSOHN!!!");
-      
+      var counter = 0;
       for (let i= 0; i < this.players.length; i++) {
         for (let j = i+1; j < this.players.length; j++) {
-          this.matches.push({player1: i, player2: j, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0]});
+          this.matches.push({number: counter, player1: i, player2: j, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0], finished: false});
+          counter++;
         }
         
       }
