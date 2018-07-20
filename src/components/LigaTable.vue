@@ -11,9 +11,9 @@
             <tr>
                 <th>Position</th>
                 <th>Name</th>
-                <th>Siege</th>
-                <th>Unentschieden</th>
-                <th>Niederlagen</th>
+                <th>S</th>
+                <th>U</th>
+                <th>N</th>
                 <th>Ø Avg.</th>
                 <th>Shots</th>
                 <th>Treffer</th>

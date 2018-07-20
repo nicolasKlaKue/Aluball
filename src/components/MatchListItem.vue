@@ -1,7 +1,17 @@
 <template>
-    <div v-bind:class="{epicGame: isEpic, greatGame: isGreat, goodGame: isGood}" id="matchlistitem">
-        <p class="item"><span v-if="finished">{{player1Score}}</span> {{player1.name}} vs. {{player2.name}} <span v-if="finished">{{player2Score}}</span> = {{gameScore}}</p>
-    </div>    
+    <tr v-bind:class="{epicGame: isEpic, greatGame: isGreat, goodGame: isGood}" id="matchlistitem">
+        <td>{{player1Score}}</td>
+        <td>{{player1.name}}</td>
+        <td>{{player2.name}}</td>
+        <td>{{player2Score}}</td>
+    </tr>
+        <!--<div class="rounded matchlistitem-flex">
+            <p><span v-if="finished" class="badge badge-light">{{player1Score}}</span></p>
+            <p>{{player1.name}}</p>
+            <p>vs.</p>
+            <p>{{player2.name}}</p>
+            <p><span v-if="finished" class="badge badge-light">{{player2Score}}</span></p>
+        </div>  -->  
 </template>
 <script>
 export default {
@@ -17,14 +27,11 @@ export default {
         }
     },
     watch:{
-        match: function(newMatch, oldMatch){
-            console.log("SONE VERFICKTE SCHEIßE!!!");
-            
+        match: function(newMatch, oldMatch){            
             this.player1Score = newMatch.player1_hits.reduce((a, b) => a + b, 0);
             this.player2Score = newMatch.player2_hits.reduce((a, b) => a + b, 0);
         },
         finished: function(oldV, newV){
-            console.log("FUCK!");
             this.player1Score = this.match.player1_hits.reduce((a, b) => a + b, 0);
             this.player2Score = this.match.player2_hits.reduce((a, b) => a + b, 0);
             this.gameScore = this.player1Score + this.player2Score;
@@ -38,15 +45,12 @@ export default {
                 this.isEpic = false;
             }
             if (this.gameScore < 18 && this.gameScore > 14){
-                console.log("SHIT GOT GREAT!");
                 this.isGreat = true;
             } else {
                 this.isGreat = false;
             }
             if (this.gameScore < 15 && this.gameScore > 9) {
-                this.isGood = true;
-                console.log("SHIT GOT GOOD!");
-                
+                this.isGood = true;                
             } else {
                 this.isGood = false;
             }
@@ -67,7 +71,13 @@ export default {
     background-color: rgb(57, 155, 57);
 }
 .item{
-    font-size: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
     margin: 0;
+}
+.matchlistitem-flex{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
 }
 </style>
