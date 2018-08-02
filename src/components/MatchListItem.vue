@@ -1,9 +1,9 @@
 <template>
     <tr v-bind:class="{epicGame: isEpic, greatGame: isGreat, goodGame: isGood}" id="matchlistitem">
-        <td>{{player1Score}}</td>
+        <td><span class="badge badge-pill" v-bind:class="{'badge-dark': defaultScorePlayer1,'badge-warning': greatScorePlayer1, 'badge-danger': epicScorePlayer1}" >{{player1Score}}</span></td>
         <td>{{player1.name}}</td>
         <td>{{player2.name}}</td>
-        <td>{{player2Score}}</td>
+        <td><span class="badge badge-pill" v-bind:class="{'badge-dark': defaultScorePlayer2,'badge-warning': greatScorePlayer2, 'badge-danger': epicScorePlayer2}" >{{player2Score}}</span></td>
     </tr>
         <!--<div class="rounded matchlistitem-flex">
             <p><span v-if="finished" class="badge badge-light">{{player1Score}}</span></p>
@@ -23,7 +23,13 @@ export default {
             gameScore: 0,
             isEpic: false,
             isGreat: false,
-            isGood: false
+            isGood: false,
+            defaultScorePlayer1: false,
+            greatScorePlayer1: false,
+            epicScorePlayer1: false,
+            defaultScorePlayer2: false,
+            greatScorePlayer2: false,
+            epicScorePlayer2: false
         }
     },
     watch:{
@@ -35,9 +41,38 @@ export default {
             this.player1Score = this.match.player1_hits.reduce((a, b) => a + b, 0);
             this.player2Score = this.match.player2_hits.reduce((a, b) => a + b, 0);
             this.gameScore = this.player1Score + this.player2Score;
+            if(this.player1Score < 7 && this.player1Score > 0){
+                this.defaultScorePlayer1 = true;
+            }else{
+                this.defaultScorePlayer1 = false;
+            }
+            if(this.player2Score < 7 && this.player2Score > 0){
+                this.defaultScorePlayer2 = true;
+            }else{
+                this.defaultScorePlayer2 = false;
+            }
+            if(this.player1Score >= 7 && this.player1Score < 9){
+                this.greatScorePlayer1 = true;
+            }else{
+                this.greatScorePlayer1 = false;
+            }
+            if(this.player2Score >= 7 && this.player2Score < 9){
+                this.greatScorePlayer2 = true;
+            }else{
+                this.greatScorePlayer2 = false;
+            }
+            if(this.player1Score == 9){
+                this.epicScorePlayer1 = true;
+            }else{
+                this.epicScorePlayer1 = false;
+            }
+            if(this.player2Score == 9){
+                this.epicScorePlayer2 = true;
+            }else{
+                this.epicScorePlayer2 = false;
+            }
         },
         gameScore: function(){
-            console.log("Score:" +this.gameScore);
             
             if (this.gameScore == 18){
                 this.isEpic = true;
@@ -61,7 +96,7 @@ export default {
 <style>
 .epicGame{
     background-color: black;
-    color: gold;
+    color: rgb(255, 157, 157);
 }
 .greatGame{
     background-color: rgb(255, 157, 157);

@@ -1,7 +1,7 @@
 <template>
     <div id="startcomp">
         <PlayerInput></PlayerInput>
-        <PlayerList v-on:new-game="startGame" :players="players" ></PlayerList>
+        <PlayerList  :players="players" ></PlayerList>
     </div>
 </template>
 <script>
@@ -14,9 +14,6 @@ export default {
     components: {PlayerInput, PlayerList},
     props: ['players'],
     methods: {
-        startGame: function(){
-            this.$emit('new-game');
-        }
     }
 }
 </script>

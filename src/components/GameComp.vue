@@ -1,16 +1,16 @@
 <template>
     <div id="gamecomp">
-        <div class="row">
-            <div class="col-sm-6">
+        <div class="row gamecomp_top_area">
+            <div class="col-sm-4">
                 <MatchList :matches="matches" :players="players"></MatchList>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
             </div>
         </div>
         
         
-        <ul>
+        <ul id="according">
             <li class="list" v-for="(match, index) in matches" :key="match.key">
                 <MatchComp :matchnumber="index" :matchname='match.player1 + "match" + match.player2' :match='match' :player1='players.find(x => x.number === match.player1)' :player2='players.find(x => x.number === match.player2)'></MatchComp>
             </li>

@@ -1,13 +1,8 @@
-<!--    
-    OpenTasks: 
-    1. Undo-Button
-    2. Match-Plan-Creator
-    3. Matches als solche
--->
+
 <template>
-    <div id="ligatable">
+    <div class="table-responsive" id="ligatable">
         <h1>Spieler:</h1>
-        <table class="table table-hover">
+        <table class="table table-striped">
             <tr>
                 <th>Position</th>
                 <th>Name</th>
@@ -25,7 +20,7 @@
                 <td>{{player.victorys}}</td>
                 <td>{{player.draws}}</td>
                 <td>{{player.losses}}</td>
-                <td>{{player.avg}}</td>
+                <td>{{Math.round(player.avg * 100)}}%</td>
                 <td>{{player.shots}}</td>
                 <td>{{player.hits}}</td>
                 <td>{{player.missed}}</td>

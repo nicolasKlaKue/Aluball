@@ -2,7 +2,7 @@
   <div id="app">
     <message>{{msg}}</message>
     <StartComp  v-if="start" :players="players"></StartComp>
-    <GameComp :matches="matches" :players="players"></GameComp>
+    <GameComp v-else :matches="matches" :players="players"></GameComp>
     <!--<LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
     <MatchComp :matchname="matchname" :players="players" ></MatchComp>-->
   </div>

@@ -1,21 +1,20 @@
 <template>
-     <div id="matchlist">
+     <div class="table-responsive" id="matchlist">
          <h1>Spielplan!</h1>
          <!--<button @click="shuffle">Neuer Plan</button>-->
-         <ul>
-            <table>
-                <tr>
-                    <th>Score P1</th>
-                    <th>P1</th>
-                    <th>P2</th>
-                    <th>Score P2</th>
-                </tr>
-                <MatchListItem v-for="match in matches" :key="match.key" :finished="match.finished" :match="match" :player1="players.find(x => x.number === match.player1)" :player2="players.find(x => x.number === match.player2)"></MatchListItem>
-            </table>
+         
+        <table class="table table-hover">
+            <tr>
+                <th>Score P1</th>
+                <th>P1</th>
+                <th>P2</th>
+                <th>Score P2</th>
+            </tr>
+            <MatchListItem v-for="match in matches" :key="match.key" :finished="match.finished" :match="match" :player1="players.find(x => x.number === match.player1)" :player2="players.find(x => x.number === match.player2)"></MatchListItem>
+        </table>
                 
                 <!--<span v-if="match.finished">{{match.player1_hits.reduce((a, b) => a + b, 0)}}</span> {{players.find(x => x.number === match.player1).name}} vs. {{players.find(x => x.number === match.player2).name}} <span v-if="match.finished">{{match.player2_hits.reduce((a, b) => a + b, 0)}}</span>-->
             
-        </ul>
      </div>
 </template>
 <script>
@@ -32,6 +31,9 @@ export default {
 }
 </script>
 <style>
+.overflow{
+    overflow: scroll;
+}
 </style>
 
 
