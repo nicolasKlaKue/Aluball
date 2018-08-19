@@ -1,7 +1,7 @@
 
 <template>
     <div class="table-responsive" id="ligatable">
-        <h1>Spieler:</h1>
+        <h1>Tabelle</h1>
         <table class="table table-striped">
             <tr>
                 <th>Position</th>

@@ -27,7 +27,6 @@ export default {
       players: [],
       matches: [],
       msg: "Aluball",
-      matchname: "1Match2",
       start: true
     }
   },

@@ -1,6 +1,6 @@
 <template>
      <div class="table-responsive" id="matchlist">
-         <h1>Spielplan!</h1>
+         <h1>Spielplan</h1>
          <!--<button @click="shuffle">Neuer Plan</button>-->
          
         <table class="table table-hover">
