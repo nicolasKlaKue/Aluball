@@ -1,8 +1,8 @@
 <template>
-    <div class="input-group text-center" id="playerinput">
-        <h1>Spielername:</h1>
+    <div class="input-group text-center align-center" id="playerinput">
+        <h1>Spielername: </h1>
         <input @keyup.enter="addNewPlayer" class="form-control" v-model="playername" type="text"> 
-        <div class="input-group-append">
+        <div class="">
             <button class="btn btn-primary"  v-on:click="addNewPlayer">Spieler hinzufügen</button>
         </div>
     </div>
@@ -24,7 +24,9 @@ export default {
 }
 </script>
 <style>
-
+.align-center{
+    align-items: center;
+}
 </style>
 
 
