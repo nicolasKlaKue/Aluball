@@ -302,7 +302,9 @@ export default {
                 }]
             },
             options: {
-                
+                animation:{
+                    duration: 0,
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
