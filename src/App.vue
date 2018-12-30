@@ -100,10 +100,26 @@ export default {
 body{
   margin: 0px;
   padding: 0px;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  body{
+    display: inline;
+  }
+}
+
+.center-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
 }
 </style>

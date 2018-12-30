@@ -112,4 +112,7 @@ export default {
 .list{
     list-style-type: none;
 }
+#according{
+    padding-left: 0px;
+}
 </style>
