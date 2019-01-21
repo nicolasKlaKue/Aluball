@@ -2,7 +2,7 @@
   <div id="app">
     <message>{{msg}}</message>
     <StartComp  v-if="start" :players="players"></StartComp>
-    <GameComp v-else :matches="matches" :players="players"></GameComp>
+    <GameComp v-if="league" :matches="matches" :players="players"></GameComp>
     <!--<LigaTable  v-on:player-victory="playerVictory" v-on:player-draw="playerDraw" v-on:player-hit="playerHit" v-on:player-missed="playerMiss" :players="players" ></LigaTable>
     <MatchComp :matchname="matchname" :players="players" ></MatchComp>-->
   </div>
@@ -26,13 +26,17 @@ export default {
     return {
       players: [],
       matches: [],
-      msg: "Aluball",
-      start: true
+      msg: "Aluball - Prototyp",
+      start: true,
+      league: false,
+      tournament: false
     }
   },
   created(){
     Event.$on('new-player', this.addNewPlayer);
     Event.$on('start-game', this.startGame);
+    Event.$on('start-game2', this.startGame2);
+    Event.$on('start-tournament', this.startTournament);
     Event.$on('shuffle-matches', this.shuffleMatches);
     Event.$on('finish-game', this.finishGame);
   },
@@ -64,10 +68,45 @@ export default {
         
       }
       this.start = false;
+      this.league = true;
       this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
+    },
+
+    startGame2: function(){
+      var counter = 0;
+      for (let i= 0; i < this.players.length; i++) {
+        for (let j = i+1; j < this.players.length; j++) {
+          this.matches.push({number: counter, player1: i, player2: j, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0], finished: false});
+          counter++;
+        }
+        
+      }
+      for (let i= 0; i < this.players.length; i++) {
+        for (let j = i+1; j < this.players.length; j++) {
+          this.matches.push({number: counter, player1: i, player2: j, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0], finished: false});
+          counter++;
+        }
+        
+      }
+      this.start = false;
+      this.league = true;
+      this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);
+    },
+
+    startTournament: function(){
+      var counter = 0;
+      for(let i = 0; i < this.players.length; i+=2){
+          this.matches.push({number: counter, player1: i, player2: i+1, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0], finished: false});
+          counter++;
+      }
+      this.start = false;
+      this.league = true;
     },
 
     shuffleMatches: function(){      
@@ -100,10 +139,26 @@ export default {
 body{
   margin: 0px;
   padding: 0px;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  body{
+    display: inline;
+  }
+}
+
+.center-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.75);
 }
 </style>

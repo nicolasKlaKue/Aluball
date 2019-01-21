@@ -112,7 +112,11 @@ export default {
 .list{
     list-style-type: none;
 }
-.no-padding{
-    padding: 0px;
+.gamecomp_top_area{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+#according{
+    padding-left: 0px;
 }
 </style>
