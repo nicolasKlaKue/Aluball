@@ -312,7 +312,7 @@ export default {
                             stepSize: 1,
                             min: 0,
                             max: 9
-                        }
+                        },
                     }]
                 }
             }

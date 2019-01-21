@@ -10,7 +10,7 @@
         </div>
         
         
-        <ul id="according">
+        <ul id="according" class="no-padding">
             <li class="list" v-for="(match, index) in matches" :key="match.key">
                 <MatchComp :matchnumber="index" :matchname='match.player1 + "match" + match.player2' :match='match' :player1='players.find(x => x.number === match.player1)' :player2='players.find(x => x.number === match.player2)'></MatchComp>
             </li>
@@ -111,5 +111,8 @@ export default {
 <style>
 .list{
     list-style-type: none;
+}
+.no-padding{
+    padding: 0px;
 }
 </style>
