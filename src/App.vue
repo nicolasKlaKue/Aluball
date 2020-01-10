@@ -63,11 +63,18 @@ export default {
         }
         
       }
+      for (let i= 0; i < this.players.length; i++) {
+        for (let j = i+1; j < this.players.length; j++) {
+          this.matches.push({number: counter, player1: i, player2: j, player1_hits:[0,0,0,0,0,0,0,0,0], player2_hits:[0,0,0,0,0,0,0,0,0], finished: false});
+          counter++;
+        }
+        
+      }
       this.start = false;
+      /*this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
       this.matches = this.shuffle(this.matches);
-      this.matches = this.shuffle(this.matches);
-      this.matches = this.shuffle(this.matches);
+      this.matches = this.shuffle(this.matches);*/
     },
 
     shuffleMatches: function(){      
