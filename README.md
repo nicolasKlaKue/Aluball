@@ -1,4 +1,4 @@
-# aluballz
+# Aluball
 
 > A Vue.js project
 

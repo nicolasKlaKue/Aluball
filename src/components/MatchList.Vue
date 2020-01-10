@@ -34,6 +34,11 @@ export default {
 .overflow{
     overflow: scroll;
 }
+.table-responsive{
+        border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    margin-bottom: 25px;
+}
 </style>
 
 
