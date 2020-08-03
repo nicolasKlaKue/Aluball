@@ -117,6 +117,7 @@ export default {
     margin-left: 0px;
 }
 #according{
-    padding-left: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 </style>

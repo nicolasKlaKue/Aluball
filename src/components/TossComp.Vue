@@ -34,7 +34,7 @@ export default {
             this.$emit('playermiss',args);
             this.$emit('thrown', args);
         }
-    }
+    },
 }
 </script>
 <style>

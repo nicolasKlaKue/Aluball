@@ -13,7 +13,7 @@
         <p v-if="warning">Es wird mehr als 1 Spieler zum spielen benötigt!</p>
         <button class="btn btn-success" v-if="players.length >= 2" @click="startGame">Hinrunde starten!</button>
         <button class="btn btn-info" v-if="players.length >= 2" @click="startGame2">Hin- und Rückrunde starten!</button>
-        <button class="btn btn-warning" v-if="players.length%2 == 0 && players.length > 2" @click="startTorunament">{{players.length}}-Spieler-Tunier!</button>
+        <!--<button class="btn btn-warning" v-if="players.length%2 == 0 && players.length > 2" @click="startTorunament">{{players.length}}-Spieler-Tunier!</button>-->
     </div>
 </template>
 <script>

@@ -4,14 +4,7 @@
         <td>{{player1.name}}</td>
         <td>{{player2.name}}</td>
         <td><span class="badge badge-pill" v-bind:class="{'badge-dark': defaultScorePlayer2,'badge-primary': goodScorePlayer2,'badge-warning': greatScorePlayer2, 'badge-danger': epicScorePlayer2}" >{{player2Score}}</span></td>
-    </tr>
-        <!--<div class="rounded matchlistitem-flex">
-            <p><span v-if="finished" class="badge badge-light">{{player1Score}}</span></p>
-            <p>{{player1.name}}</p>
-            <p>vs.</p>
-            <p>{{player2.name}}</p>
-            <p><span v-if="finished" class="badge badge-light">{{player2Score}}</span></p>
-        </div>  -->  
+    </tr> 
 </template>
 <script>
 export default {
