@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="row no-margin">
-                    <div v-bind:id="'collapse' + matchnumber" class="panel-collape collapse  no-shadow">
+                    <div v-bind:id="'collapse' + matchnumber" class="panel-collape collapse table-responsive no-shadow no-border">
                     <div class="row no-margin">
                         <canvas v-bind:id="'Chart' + matchnumber"  ></canvas>
                     </div>
@@ -410,6 +410,9 @@ export default {
 }
 .no-shadow{
     box-shadow: 0px 0px 0px black; 
+}
+.no-border{
+    border: 0px solid rgba(0, 0, 0, 0.125);
 }
 </style>
 
