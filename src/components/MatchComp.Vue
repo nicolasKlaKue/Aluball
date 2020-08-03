@@ -13,7 +13,7 @@
                     <div class="row no-margin">
                         <canvas v-bind:id="'Chart' + matchnumber"  ></canvas>
                     </div>
-                    <div class="row no-margin">
+                    <div class="row no-margin overflow-auto">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -413,6 +413,9 @@ export default {
 }
 .no-border{
     border: 0px solid rgba(0, 0, 0, 0.125);
+}
+.overflow-auto{
+    overflow-x: auto;
 }
 </style>
 
