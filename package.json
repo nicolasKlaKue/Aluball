@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "jquery": "^3.5.1",
     "minimist": "^1.2.5",
     "vue": "^2.5.17"
